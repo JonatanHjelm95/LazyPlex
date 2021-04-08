@@ -23,7 +23,7 @@ def lookup():
 @app.route('/path', methods=['GET'])
 def get_path():
     try:
-        return ad.get_library_path()
+        return ad.get_library_path()['path']
     except Exception as e:
         return jsonify(str(e))
 
