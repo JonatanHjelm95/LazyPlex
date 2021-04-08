@@ -3,6 +3,7 @@ import database as db
 import application_data as ad
 import json
 from dotenv import load_dotenv
+import os
 
 load_dotenv('.env')
 user = os.getenv('USER')
