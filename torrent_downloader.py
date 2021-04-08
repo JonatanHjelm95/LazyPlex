@@ -64,7 +64,7 @@ def get_torrent_info():
                     db.finished_downloading_title(torrents[i]['name'])
                     ad.fix_files(torrents[i]['name'])
     # if no active torrents / stop seeding
-    if len(torr) < 1:
+    if len(torr) == 0:
         pause_all()
         return 'no torrents'
     return torr
