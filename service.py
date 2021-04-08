@@ -8,7 +8,7 @@ import json
 
 app = Flask(__name__)
 
-cors = CORS(app, resources={r"/*": {"origins":["http://localhost:5000"]}},supports_credentials=True)
+cors = CORS(app, resources={r"/*": {"origins":["http://localhost:4200"]}},supports_credentials=True)
 
 # Scrapes piratebay for torrent with input name
 @app.route('/lookup', methods=['POST'])
