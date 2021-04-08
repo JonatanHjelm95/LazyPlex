@@ -1,0 +1,16 @@
+<div class="dot-container" (click)="toggleSidebar()" *ngIf="!shown">
+    <div class="dot">{{'\t'}}</div>
+    <div class="dot">{{'\t'}}</div>
+    <div class="dot">{{'\t'}}</div>
+</div>
+<div class="sidebar-container" *ngIf="shown">
+    <button (click)="toggleSidebar()">close</button>
+    <br/>
+    <app-torrents></app-torrents>
+    <form #folderPath="ngForm" (ngSubmit)="onSubmit(folderPath.value)">
+        <label>Plex library Path</label><br />
+        <input type="text" name="name" ngModel placeholder="/full/path/to/plex/library" [(ngModel)]="path">
+        <button type="submit">Save</button>
+
+    </form>
+</div>

@@ -1,0 +1,7 @@
+{
+    "/coreengine*": {
+        "target":"http://localhost:5000",
+        "secure":true,
+        "logLevel":"debug"
+        }
+    }  

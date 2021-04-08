@@ -1,0 +1,44 @@
+.bottombar-container {
+    width: 100%;
+    position: fixed;
+    height: auto;
+    bottom: 0;
+    background-color: #282A2D;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 60px;
+    border-top-left-radius: 20px;
+    transition: all 1s ease-in-out;
+}
+
+.active-downloads {
+    padding: 50px;
+    width: 90%;
+    transition: all 1s ease-in-out;
+
+}
+
+label{
+    color: white;
+}
+@media screen and (max-width: 768px) {
+
+    .ellipsis-info{
+      max-width: 60px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ellipsis-sl{
+      max-width: 40px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ellipsis-name {
+      max-width: 100px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }

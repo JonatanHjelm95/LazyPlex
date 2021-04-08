@@ -1,0 +1,12 @@
+.progress-container {
+    height: 10px;
+    width: 150px;
+    border-radius: 5px;
+    background-color: grey;
+    transition: 1s ease all;
+}
+.progress{
+    height: 10px;
+    transition: 1s ease all;
+    background-color: green
+}

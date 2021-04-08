@@ -1,0 +1,55 @@
+<div class="torrent-lookup-container">
+    <form #torrentLookup="ngForm" (ngSubmit)="onSubmit(torrentLookup.value)">
+        <input type="text" name="name" ngModel placeholder="search for a movie or tv-show">
+        <button type="submit">Search</button>
+
+    </form>
+
+    <table mdbTable class="table table-striped table-responsive-md btn-table" *ngIf="torrents">
+        <thead>
+            <th>Name</th>
+            <th>Info</th>
+            <th>Seeders</th>
+            <th>Leechers</th>
+            <th>Trusted</th>
+        </thead>
+        <tbody>
+            <tr mdbTableCol class="result-row" mdbWavesEffect type="tr"
+                *ngFor="let torrent of torrents | paginate: {itemsPerPage:10,currentPage:p};" (click)="open(content)">
+                <td class="ellipsis-name"><label>{{torrent.name}}</label></td>
+                <td class="ellipsis-info"><label>{{torrent.info}}</label></td>
+                <td class="ellipsis-sl"><label>{{torrent.seeders}}</label></td>
+                <td class="ellipsis-sl"><label>{{torrent.leechers}}</label></td>
+                <td><label>{{torrent.trusted}}</label></td>
+                <ng-template #content let-modal>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Download torrent?</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>{{torrent.name}}</label><br />
+                        <label>{{torrent.info}}</label><br />
+                        <label class="warning" *ngIf="!torrent.trusted">Warning! the uploader is not a trusted
+                            publisher</label>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark"
+                            (click)="downloadTorrent(torrent)">Download</button>
+                    </div>
+                </ng-template>
+            </tr>
+
+        </tbody>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table>
+
+</div>
+
+<!--   <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+
+<hr>
+
+<!-- <pre>{{ closeResult }}</pre> -->

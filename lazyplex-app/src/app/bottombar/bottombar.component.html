@@ -1,0 +1,42 @@
+<div class="bottombar-container" *ngIf="activeDownloads.length > 0">
+    <button (click)="controlqtClient('start')">Resume</button>
+    <button (click)="controlqtClient('stop')">pause</button>
+    <br/>
+    <table class="active-downloads">
+        <thead>
+            <th><label>name</label></th>
+            <th><label>progress</label></th>
+            <th><label>size</label></th>
+            <th><label>speed</label></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let download of activeDownloads" (click)="open(content, download.name)">
+                <td class="ellipsis-name"><label>{{download.name}}</label></td>
+                <td><app-progress [download]=download></app-progress></td>
+                <td><label>{{download.size}}</label></td>
+                <td><label>{{download.speed}}</label></td>
+                <ng-template #content let-modal>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Change the filename</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form #changeTitle="ngForm" (ngSubmit)="onSubmit(changeTitle.value, download.name)">
+                    <div class="modal-body">
+                            <input type="text" name="name" [(ngModel)]="origin_title">
+                            
+                    
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-dark"
+                            >Save</button>
+                        </div>
+                    </form>
+                </ng-template>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
