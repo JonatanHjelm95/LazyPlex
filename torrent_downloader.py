@@ -66,6 +66,7 @@ def get_torrent_info():
     # if no active torrents / stop seeding
     if len(torr) < 1:
         pause_all()
+        return 'no torrents'
     return torr
 
 def get_size_format(b, factor=1024, suffix="B"):
