@@ -8,13 +8,15 @@ import os
 load_dotenv('.env')
 user = os.getenv('USER')
 password = os.getenv('PASS')
+port = os.getenv('PORT')
+URL = f'http://127.0.0.1:{port}'
 
 def get_save_path():
     with open('application.json', 'r') as f:
         prinf.readlines()
 
 def download_torrent(order):
-    qb = Client("http://127.0.0.1:8085/")
+    qb = Client(URL)
     qb.login(user, password)
     app_data = ad.get_library_path()
     qb.download_from_link(order['magnet'], savepath=app_data['path'])
@@ -23,12 +25,12 @@ def download_torrent(order):
 
 
 def pause_all():
-    qb = Client("http://127.0.0.1:8085/")
+    qb = Client(URL)
     qb.login(user, password)
     qb.pause_all()
 
 def start_all():
-    qb = Client("http://127.0.0.1:8085/")
+    qb = Client(URL)
     qb.login(user, password)
     qb.resume_all()
 
@@ -50,7 +52,7 @@ def set_origin_title(original_title, title):
 
 
 def get_torrent_info():
-    qb = Client("http://127.0.0.1:8085/")
+    qb = Client(URL)
     qb.login(user, password)
     torrents = qb.torrents()
     active_torrents = db.get_active_torrents()
