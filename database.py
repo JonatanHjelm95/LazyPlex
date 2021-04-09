@@ -67,8 +67,11 @@ def get_active_torrents():
     return list(cur.fetchall())
 
 def init_app():
-    init_db()
-    create_order_table()
+    try:
+        init_db()
+        create_order_table()
+    except:
+        'DB has already been initialized'
 
 if __name__ == '__main__':
     init_app()
